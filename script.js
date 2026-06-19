@@ -611,4 +611,122 @@ document.addEventListener('DOMContentLoaded', () => {
     
     fetchGithubStats();
 
+    // ==========================================================================
+    // 10. CODEPEN DEPLOY ENGINE
+    // ==========================================================================
+    const codepenDeployBtn = document.getElementById('codepen-deploy');
+    if (codepenDeployBtn) {
+        codepenDeployBtn.addEventListener('click', deployToCodePen);
+    }
+
+    async function deployToCodePen() {
+        try {
+            console.log(">> [CODEPEN] Bundling local source files for CodePen deployment...");
+            
+            // 1. Fetch source files from local Java server
+            const htmlRaw = await fetch('index.html').then(r => r.text());
+            const cssRaw = await fetch('style.css').then(r => r.text());
+            const avatarJs = await fetch('avatar-3d.js').then(r => r.text());
+            const scriptJs = await fetch('script.js').then(r => r.text());
+            
+            // 2. Parse HTML and strip script and link references
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlRaw, 'text/html');
+            
+            // Remove style.css link
+            const styleLink = doc.querySelector('link[href="style.css"]');
+            if (styleLink) styleLink.remove();
+            
+            // Remove all local and script CDN scripts
+            const scripts = doc.querySelectorAll('script');
+            scripts.forEach(s => {
+                const src = s.getAttribute('src') || '';
+                if (src.includes('three.js') || 
+                    src.includes('GLTFLoader.js') || 
+                    src.includes('MeshLine.js') || 
+                    src.includes('gsap.min.js') || 
+                    src.includes('ScrollTrigger.min.js') || 
+                    src.includes('vanilla-tilt.min.js') || 
+                    src.includes('avatar-3d.js') || 
+                    src.includes('script.js')) {
+                    s.remove();
+                }
+            });
+            
+            const cleanBody = doc.body.innerHTML;
+            
+            // 3. Setup external resources
+            const externalJS = [
+                "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js",
+                "https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js",
+                "https://unpkg.com/three.meshline@1.4.0/src/THREE.MeshLine.js",
+                "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js",
+                "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js",
+                "https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"
+            ].join(";");
+            
+            const headHTML = `
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+            `.trim();
+            
+            // 4. Combine JS and inject comments on asset hosting
+            const combinedJS = `
+/* ==========================================================================
+   CODEPEN UPLINK AUTOMATION // SOHAM NESWANKAR PORTFOLIO
+   ========================================================================== */
+
+/* 
+ * NOTE: CodePen does not host binary assets (images or 3D models) on the free tier.
+ * To enable custom photos and 3D lanyard models:
+ * 1. Push your project to GitHub (github.com/SOHAM5128/portfolio).
+ * 2. Enable GitHub Pages to host your files.
+ * 3. Update the URLs in this JS tab pointing 'assets/kartu.glb' and 
+ *    'assets/soham_avatar.png' to your raw github.io URLs!
+ * 
+ * If URLs are not updated, the 3D card fallback mesh and silhouette is enabled.
+ */
+
+${avatarJs}
+
+${scriptJs}
+            `;
+            
+            // 5. Build Pen config JSON
+            const penConfig = {
+                title: "Soham Neswankar - Futuristic 3D Portfolio",
+                description: "Futuristic 3D Developer Portfolio featuring glassmorphic HUD design and physics-simulated swinging lanyard.",
+                html: cleanBody,
+                css: cssRaw,
+                js: combinedJS,
+                js_external: externalJS,
+                head: headHTML
+            };
+            
+            // 6. Generate and submit dynamic form
+            const form = document.createElement('form');
+            form.action = 'https://codepen.io/pen/define';
+            form.method = 'POST';
+            form.target = '_blank';
+            
+            const dataInput = document.createElement('input');
+            dataInput.type = 'hidden';
+            dataInput.name = 'data';
+            dataInput.value = JSON.stringify(penConfig);
+            
+            form.appendChild(dataInput);
+            document.body.appendChild(form);
+            form.submit();
+            
+            console.log(">> [CODEPEN] Project compiled and transmitted to CodePen prefill gateway.");
+            setTimeout(() => form.remove(), 1000);
+            
+        } catch (e) {
+            console.error("CodePen Deploy Fail:", e);
+            alert("UPLINK FAILED: Could not compile files for CodePen. " + e.message);
+        }
+    }
+
 });
