@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.addEventListener('error', function(e) {
+            console.error("GLOBAL ERROR caught:", e.message, "at", e.filename, ":", e.lineno);
+            alert("GLOBAL ERROR: " + e.message + " at " + e.filename + ":" + e.lineno);
+        });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Soham Neswankar - Premium Futuristic 3D Developer Portfolio. Creative Full-Stack Engineer specializing in interactive 3D Web experiences.">
+    <meta name="keywords" content="Portfolio, 3D Web, Three.js, GSAP, WebGL, Full-Stack Developer, Cyberpunk Website, Creative Developer">
+    <meta name="author" content="Soham Neswankar">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Soham Neswankar | Creative 3D Engineer">
+    <meta property="og:description" content="Explore a premium, cinematic 3D portfolio featuring interactive WebGL scenes, futuristic HUD designs, and high-performance animations.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=1200&auto=format&fit=crop">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Soham Neswankar | Creative 3D Engineer">
+    <meta property="twitter:description" content="Explore a premium, cinematic 3D portfolio featuring interactive WebGL scenes, futuristic HUD designs, and high-performance animations.">
+
+    <title>SOHAM NESWANKAR // Interactive 3D Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Cyberpunk Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Scanline & Glitch HUD Overlay -->
+    <div class="hud-overlay">
+        <div class="scanlines"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Interactive Terminal Preloader -->
+    <div id="preloader">
+        <div class="loader-terminal">
+            <div class="terminal-header">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+                <span class="terminal-title">SYSTEM_BOOT_SEQUENCE</span>
+            </div>
+            <div class="terminal-body" id="loaderLogs">
+                <p class="log-line">> INITIALIZING QUANTUM CORE...</p>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar-fill" id="loaderBar"></div>
+                <div class="progress-percentage" id="loaderPercent">0%</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="hud-header">
+        <nav class="header-nav">
+            <ul>
+                <li><a href="#about" class="nav-link"><span class="nav-num">01.</span> ABOUT</a></li>
+                <li><a href="#skills" class="nav-link"><span class="nav-num">02.</span> SKILLS</a></li>
+                <li><a href="#projects" class="nav-link"><span class="nav-num">03.</span> PROJECTS</a></li>
+                <li><a href="#timeline" class="nav-link"><span class="nav-num">04.</span> EDUCATION</a></li>
+                <li><a href="#certs" class="nav-link"><span class="nav-num">05.</span> CERTS</a></li>
+                <li><a href="#profiles" class="nav-link"><span class="nav-num">06.</span> PROFILES</a></li>
+                <li><a href="#contact" class="nav-link"><span class="nav-num">07.</span> CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="header-controls">
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Cyber Theme">
+                <i class="fa-solid fa-moon"></i>
+                <span class="toggle-glow"></span>
+            </button>
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay">
+        <nav class="mobile-nav-menu">
+            <ul>
+                <li><a href="#about" class="mobile-nav-link"><span>01.</span> ABOUT</a></li>
+                <li><a href="#skills" class="mobile-nav-link"><span>02.</span> SKILLS</a></li>
+                <li><a href="#projects" class="mobile-nav-link"><span>03.</span> PROJECTS</a></li>
+                <li><a href="#timeline" class="mobile-nav-link"><span>04.</span> EDUCATION</a></li>
+                <li><a href="#certs" class="mobile-nav-link"><span>05.</span> CERTS</a></li>
+                <li><a href="#profiles" class="mobile-nav-link"><span>06.</span> PROFILES</a></li>
+                <li><a href="#contact" class="mobile-nav-link"><span>07.</span> CONTACT</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Container -->
+    <main class="content-wrapper">
+
+        <!-- 1. Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-grid">
+                    <!-- Left Side: Info -->
+                    <div class="hero-info-side">
+                        <h1 class="hero-title scroll-reveal">SOHAM NESWANKAR</h1>
+                        <h2 class="hero-subtitle-static scroll-reveal">FULL STACK DEVELOPER</h2>
+                        <p class="hero-desc scroll-reveal">
+                            Computer Science Engineering student at Parul University. Skilled in MERN stack development, REST API integration, and responsive 3D web experiences. Seeking software development internship opportunities.
+                        </p>
+                        <div class="hero-ctas scroll-reveal" style="display: flex; flex-wrap: wrap; gap: 15px;">
+                            <!-- Dynamic Resume Download -->
+                            <a href="/api/resume/download" class="cyber-btn primary" download="Soham_Neswankar_Resume.pdf">
+                                <span class="btn-glow"></span>
+                                <span class="btn-text"><i class="fa-solid fa-file-arrow-down"></i> DOWNLOAD RESUME</span>
+                            </a>
+                            <!-- Contact Link -->
+                            <a href="#contact" class="cyber-btn secondary">
+                                <span class="btn-text"><i class="fa-solid fa-satellite-dish"></i> CONNECT PROTOCOL</span>
+                            </a>
+                            <!-- View Projects -->
+                            <a href="#projects" class="cyber-btn secondary">
+                                <span class="btn-text">VIEW PROJECTS <i class="fa-solid fa-caret-down"></i></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Professional Avatar HUD Identity Card -->
+                    <div class="hero-avatar-side">
+                        <div id="avatar-3d-container" class="scroll-reveal">
+                            <canvas id="avatar-3d-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-down-hud">
+                <div class="mouse-icon">
+                    <span class="mouse-wheel"></span>
+                </div>
+                <div class="scroll-label">SCROLL_DOWN</div>
+            </div>
+        </section>
+
+        <!-- 2. About Section -->
+        <section id="about" class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-text="01. ABOUT_ME">01. ABOUT_ME</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="about-grid">
+                    <!-- Bio Column -->
+                    <div class="about-text scroll-reveal">
+                        <h3 class="cyber-heading">CORE PROFILE // SOHAM NESWANKAR</h3>
+                        <p class="about-paragraph" style="margin-bottom: 25px;">
+                            I am a Computer Science Engineering student at <span class="highlight">Parul University</span> (Expected Graduation: 2027). As an aspiring software engineer, I focus on constructing high-performance digital ecosystems and bridging core computing architecture with immersive frontend interactions.
+                        </p>
+
+                        <div class="about-details-list" style="display: flex; flex-direction: column; gap: 15px; border-top: 1px solid var(--glass-border); padding-top: 20px; margin-bottom: 30px;">
+                            <div class="detail-item" style="line-height: 1.6; font-size: 0.95rem;">
+                                <span style="color: var(--neon-cyan); font-family: var(--font-cyber); font-weight: 800; margin-right: 8px; letter-spacing: 0.5px;">[TECHNOLOGIES]</span>
+                                <span style="color: var(--text-muted);">MERN Stack (React.js, Node.js, Express.js, MongoDB), Java, JavaScript, Python, C, C++, Git, GitHub, REST APIs, Three.js, and AR.js.</span>
+                            </div>
+                            <div class="detail-item" style="line-height: 1.6; font-size: 0.95rem;">
+                                <span style="color: var(--neon-cyan); font-family: var(--font-cyber); font-weight: 800; margin-right: 8px; letter-spacing: 0.5px;">[INTERESTS]</span>
+                                <span style="color: var(--text-muted);">Full-stack development, Augmented Reality (AR) systems, 3D graphics on the web, and responsive human-centric user experience design.</span>
+                            </div>
+                            <div class="detail-item" style="line-height: 1.6; font-size: 0.95rem;">
+                                <span style="color: var(--neon-cyan); font-family: var(--font-cyber); font-weight: 800; margin-right: 8px; letter-spacing: 0.5px;">[CAREER_GOALS]</span>
+                                <span style="color: var(--text-muted);">Securing a software development internship to solve real-world architectural complexities, engineer scalable client-server pipelines, and contribute to progressive dev teams.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Skills Section -->
+        <section id="skills" class="section-padding section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-text="02. TECH_ABILITIES">02. TECH_ABILITIES</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="skills-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 25px;">
+                    <!-- Languages Panel -->
+                    <div class="skill-card scroll-reveal" data-tilt data-tilt-max="10">
+                        <div class="card-glow"></div>
+                        <div class="skill-icon"><i class="fa-solid fa-code"></i></div>
+                        <h3 class="skill-title">LANGUAGES</h3>
+                        
+                        <div class="skill-list-hologram">
+                            <div class="skill-item-hud">
+                                <span class="skill-item-name">> Java</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="90%"></span></div>
+                            </div>
+                            <div class="skill-item-hud">
+                                <span class="skill-item-name">> JavaScript</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="95%"></span></div>
+                            </div>
+                            <div class="skill-item-hud">
+                                <span class="skill-item-name">> Python</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="80%"></span></div>
+                            </div>
+                            <div class="skill-item-hud">
+                                <span class="skill-item-name">> C</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="75%"></span></div>
+                            </div>
+                            <div class="skill-item-hud">
+                                <span class="skill-item-name">> C++</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="75%"></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Frontend Panel -->
+                    <div class="skill-card scroll-reveal" data-tilt data-tilt-max="10">
+                        <div class="card-glow"></div>
+                        <div class="skill-icon"><i class="fa-solid fa-display"></i></div>
+                        <h3 class="skill-title">FRONTEND</h3>
+                        
+                        <div class="skill-list-hologram">
+                            <div class="skill-item-hud">
+                                <span class="skill-item-name">> React.js</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="95%"></span></div>
+                            </div>
+                            <div class="skill-item-hud">
+                                <span class="skill-item-name">> HTML5</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="95%"></span></div>
+                            </div>
+                            <div class="skill-item-hud">
+                                <span class="skill-item-name">> CSS3</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="90%"></span></div>
+                            </div>
+                            <div class="skill-item-hud">
+                                <span class="skill-item-name">> JavaScript</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="95%"></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend Panel -->
+                    <div class="skill-card scroll-reveal" data-tilt data-tilt-max="10">
+                        <div class="card-glow"></div>
+                        <div class="skill-icon"><i class="fa-solid fa-server"></i></div>
+                        <h3 class="skill-title">BACKEND</h3>
+                        
+                        <div class="skill-list-hologram">
+                            <div class="skill-item-hud">
+                                <span class="skill-item-name">> Node.js</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="85%"></span></div>
+                            </div>
+                            <div class="skill-item-hud">
+                                <span class="skill-item-name">> Express.js</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="85%"></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Database Panel -->
+                    <div class="skill-card scroll-reveal" data-tilt data-tilt-max="10">
+                        <div class="card-glow"></div>
+                        <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
+                        <h3 class="skill-title">DATABASE</h3>
+                        
+                        <div class="skill-list-hologram">
+                            <div class="skill-item-hud" style="margin-bottom: 8px;">
+                                <span class="skill-item-name">> MongoDB</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="90%"></span></div>
+                            </div>
+                            <div class="skill-item-hud">
+                                <span class="skill-item-name">> MySQL</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="85%"></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Technologies Panel -->
+                    <div class="skill-card scroll-reveal" data-tilt data-tilt-max="10">
+                        <div class="card-glow"></div>
+                        <div class="skill-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <h3 class="skill-title">TOOLS & TECHNOLOGIES</h3>
+                        
+                        <div class="skill-list-hologram" style="margin-top: 10px;">
+                            <div class="skill-item-hud" style="margin-bottom: 8px;">
+                                <span class="skill-item-name">> Git</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="95%"></span></div>
+                            </div>
+                            <div class="skill-item-hud" style="margin-bottom: 8px;">
+                                <span class="skill-item-name">> GitHub</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="95%"></span></div>
+                            </div>
+                            <div class="skill-item-hud" style="margin-bottom: 8px;">
+                                <span class="skill-item-name">> REST APIs</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="90%"></span></div>
+                            </div>
+                            <div class="skill-item-hud" style="margin-bottom: 8px;">
+                                <span class="skill-item-name">> Three.js</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="85%"></span></div>
+                            </div>
+                            <div class="skill-item-hud" style="margin-bottom: 8px;">
+                                <span class="skill-item-name">> AR.js</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="80%"></span></div>
+                            </div>
+                            <div class="skill-item-hud" style="margin-bottom: 8px;">
+                                <span class="skill-item-name">> Responsive Web Design</span>
+                                <div class="skill-item-bar"><span class="bar-fill" data-width="95%"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Projects Section -->
+        <section id="projects" class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-text="03. DEPLOYED_WORK">03. DEPLOYED_WORK</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <!-- Project Filtering Controls -->
+                <div class="project-filters scroll-reveal">
+                    <button class="filter-btn active" data-filter="all">ALL_SYSTEMS</button>
+                    <button class="filter-btn" data-filter="mern">MERN_STACK</button>
+                    <button class="filter-btn" data-filter="threejs">3D_GRAPHICS</button>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1: AR Virtual Trial Room Website -->
+                    <article class="project-card scroll-reveal" data-category="threejs mern" data-tilt data-tilt-max="10">
+                        <div class="project-img-wrapper">
+                            <div class="project-visual-mock" style="background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);">
+                                <div class="frequency-bars">
+                                    <span class="f-bar"></span>
+                                    <span class="f-bar"></span>
+                                    <span class="f-bar"></span>
+                                    <span class="f-bar"></span>
+                                    <span class="f-bar"></span>
+                                </div>
+                                <span class="mock-tag">AR TRY-ON ENGINE</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">PROJECT_01 // AR_VIRTUAL_TRIAL</h3>
+                            <p class="project-desc" style="font-size: 0.92rem; line-height: 1.5; margin-bottom: 15px;">
+                                • Built an AR-based virtual trial room application using React.js, Three.js, and AR.js.<br>
+                                • Implemented real-time camera overlay and responsive user interface for virtual product try-on.<br>
+                                • Developed backend APIs using Node.js, Express.js, and MongoDB.
+                            </p>
+                            <div class="project-tags" style="margin-bottom: 15px;">
+                                <span class="tag">React.js</span>
+                                <span class="tag">Three.js</span>
+                                <span class="tag">AR.js</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">MongoDB</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/SOHAM5128/ar-virtual-trial-room" target="_blank" class="project-link-btn" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i> REPO</a>
+                                <a href="https://codepen.io" target="_blank" class="project-link-btn primary" aria-label="Live Demo"><i class="fa-solid fa-square-rss"></i> DEPLOY</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Portfolio Website -->
+                    <article class="project-card scroll-reveal" data-category="mern" data-tilt data-tilt-max="10">
+                        <div class="project-img-wrapper">
+                            <div class="project-visual-mock" style="background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);">
+                                <div class="grid-animation"></div>
+                                <div class="floating-circle-cyan"></div>
+                                <div class="floating-circle-purple"></div>
+                                <span class="mock-tag">PORTFOLIO ENGINE</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">PROJECT_02 // PORTFOLIO_WEBSITE</h3>
+                            <p class="project-desc" style="font-size: 0.92rem; line-height: 1.5; margin-bottom: 15px;">
+                                • Developed a responsive portfolio website to showcase projects, certifications, and technical skills.<br>
+                                • Designed mobile-friendly UI with smooth navigation and optimized responsiveness.<br>
+                                • Implemented modern frontend components using React.js and JavaScript.
+                            </p>
+                            <div class="project-tags" style="margin-bottom: 15px;">
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">React.js</span>
+                                <span class="tag">GitHub</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/SOHAM5128/portfolio-website" target="_blank" class="project-link-btn" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i> REPO</a>
+                                <a href="https://codepen.io" target="_blank" class="project-link-btn primary" aria-label="Live Demo"><i class="fa-solid fa-square-rss"></i> DEPLOY</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: AI Interview Prep -->
+                    <article class="project-card scroll-reveal" data-category="mern" data-tilt data-tilt-max="10">
+                        <div class="project-img-wrapper">
+                            <!-- Visual mock of project instead of placeholder -->
+                            <div class="project-visual-mock" style="background: linear-gradient(135deg, #fae8ff 0%, #fdf4ff 100%);">
+                                <div class="grid-animation" style="opacity: 0.25;"></div>
+                                <div class="floating-circle-purple" style="opacity: 0.15; width: 90px; height: 90px; filter: blur(15px);"></div>
+                                <span class="mock-tag">AI SIMULATION CORE</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">PROJECT_03 // AI_INTERVIEW_PREP</h3>
+                            <p class="project-desc" style="font-size: 0.92rem; line-height: 1.5; margin-bottom: 15px;">
+                                An intelligent mock interview simulator. Conducts dynamic voice-based practice sessions, evaluates technical depth, and yields detailed analytics.
+                            </p>
+                            <div class="project-tags" style="margin-bottom: 15px;">
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Python</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/SOHAM5128/AI-Interview-Preparation" target="_blank" class="project-link-btn" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i> REPO</a>
+                                <a href="https://codepen.io" target="_blank" class="project-link-btn primary" aria-label="Live Demo"><i class="fa-solid fa-square-rss"></i> DEPLOY</a>
+                            </div>
+                        </div>
+                    </article>
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Timeline Section -->
+        <section id="timeline" class="section-padding section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-text="04. EDUCATION">04. EDUCATION</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="timeline-container">
+                    <!-- Circuit-line drawer -->
+                    <div class="timeline-circuit-line">
+                        <div class="timeline-line-glow"></div>
+                    </div>
+
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item left scroll-reveal">
+                        <div class="timeline-dot-hud"></div>
+                        <div class="timeline-card" data-tilt data-tilt-max="5">
+                            <div class="timeline-meta">
+                                <span class="timeline-date">2023 - 2027</span>
+                                <span class="timeline-badge">B.TECH</span>
+                            </div>
+                            <h3 class="timeline-title">B.TECH IN COMPUTER SCIENCE</h3>
+                            <h4 class="timeline-subtitle">PARUL UNIVERSITY, VADODARA, INDIA</h4>
+                            <p class="timeline-desc">
+                                Computer Science Engineering student focusing on software design, algorithms, computer graphics, and MERN stack development architectures. Expected Graduation: 2027.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item right scroll-reveal">
+                        <div class="timeline-dot-hud"></div>
+                        <div class="timeline-card" data-tilt data-tilt-max="5">
+                            <div class="timeline-meta">
+                                <span class="timeline-date">2023</span>
+                                <span class="timeline-badge">HSC</span>
+                            </div>
+                            <h3 class="timeline-title">HIGHER SECONDARY CERTIFICATE (HSC)</h3>
+                            <h4 class="timeline-subtitle">R. K. TALREJA COLLEGE OF ARTS, SCIENCE & COMMERCE, THANE, MAHARASHTRA</h4>
+                            <p class="timeline-desc">
+                                Completed high school science division with focus on physics, chemistry, mathematics, and analytical computation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item left scroll-reveal">
+                        <div class="timeline-dot-hud"></div>
+                        <div class="timeline-card" data-tilt data-tilt-max="5">
+                            <div class="timeline-meta">
+                                <span class="timeline-date">2021</span>
+                                <span class="timeline-badge">SSC</span>
+                            </div>
+                            <h3 class="timeline-title">SECONDARY SCHOOL CERTIFICATE (SSC)</h3>
+                            <h4 class="timeline-subtitle">ST. JUDE'S HIGH SCHOOL, KALYAN, MAHARASHTRA</h4>
+                            <p class="timeline-desc">
+                                Completed secondary education curriculum with academic honors, specializing in fundamental mathematics and computer basics.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Certifications Section -->
+        <section id="certs" class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-text="05. SECURED_CREDENTIALS">05. SECURED_CREDENTIALS</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="certs-grid">
+                    <!-- Cert 1 -->
+                    <div class="cert-card scroll-reveal" data-tilt data-tilt-max="10">
+                        <div class="cert-glow"></div>
+                        <div class="cert-icon-wrapper">
+                            <i class="fa-solid fa-cloud"></i>
+                        </div>
+                        <div class="cert-content">
+                            <span class="cert-id">CERT_ID: AWS_ACAD_2025</span>
+                            <h3 class="cert-title">AWS ACADEMY CLOUD FOUNDATIONS</h3>
+                            <p class="cert-authority">ISSUED BY: AWS ACADEMY</p>
+                            <div class="cert-meta">
+                                <span>VERIFIED: YES</span>
+                                <span>DATE: 2025</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cert 2 -->
+                    <div class="cert-card scroll-reveal" data-tilt data-tilt-max="10">
+                        <div class="cert-glow"></div>
+                        <div class="cert-icon-wrapper">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <div class="cert-content">
+                            <span class="cert-id">CERT_ID: NPTEL_CN_2024</span>
+                            <h3 class="cert-title">COMPUTER NETWORKS SPECIALIZATION</h3>
+                            <p class="cert-authority">ISSUED BY: NPTEL // IIT</p>
+                            <div class="cert-meta">
+                                <span>VERIFIED: YES</span>
+                                <span>DATE: 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Coding Profiles Section -->
+        <section id="profiles" class="section-padding section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-text="05. CODING_PROFILES">05. CODING_PROFILES</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="profiles-grid">
+                    <!-- GitHub Card -->
+                    <a href="https://github.com/SOHAM5128" target="_blank" class="profile-card scroll-reveal github" data-tilt data-tilt-max="10">
+                        <div class="profile-glow"></div>
+                        <div class="profile-icon"><i class="fa-brands fa-github"></i></div>
+                        <h3 class="profile-title">GITHUB</h3>
+                        <p class="profile-username">> @SOHAM5128</p>
+                        <div class="profile-stats">
+                            <div class="p-stat"><span>REPOS:</span> <span id="github-repos">12+</span></div>
+                            <div class="p-stat"><span>STARS:</span> <span id="github-stars">24+</span></div>
+                            <div class="p-stat"><span>SYNC:</span> <span class="sync-active">ACTIVE</span></div>
+                        </div>
+                    </a>
+
+                    <!-- LeetCode Card -->
+                    <a href="https://leetcode.com/u/SOHAM_3116" target="_blank" class="profile-card scroll-reveal leetcode" data-tilt data-tilt-max="10">
+                        <div class="profile-glow"></div>
+                        <div class="profile-icon"><i class="fa-solid fa-code"></i></div>
+                        <h3 class="profile-title">LEETCODE</h3>
+                        <p class="profile-username">> @SOHAM_3116</p>
+                        <div class="profile-stats">
+                            <div class="p-stat"><span>SOLVED:</span> <span>250+</span></div>
+                            <div class="p-stat"><span>RANKING:</span> <span>Top 14%</span></div>
+                            <div class="p-stat"><span>RATING:</span> <span>1650</span></div>
+                        </div>
+                    </a>
+
+                    <!-- CodeChef Card -->
+                    <a href="https://www.codechef.com/users/soham_3116" target="_blank" class="profile-card scroll-reveal codechef" data-tilt data-tilt-max="10">
+                        <div class="profile-glow"></div>
+                        <div class="profile-icon"><i class="fa-solid fa-fire"></i></div>
+                        <h3 class="profile-title">CODECHEF</h3>
+                        <p class="profile-username">> @soham_3116</p>
+                        <div class="profile-stats">
+                            <div class="p-stat"><span>RATING:</span> <span>1540+</span></div>
+                            <div class="p-stat"><span>DIVISION:</span> <span>Div 3</span></div>
+                            <div class="p-stat"><span>STARS:</span> <span>3-Star</span></div>
+                        </div>
+                    </a>
+
+                    <!-- HackerRank Card -->
+                    <a href="https://www.hackerrank.com/profile/sohamneswankar" target="_blank" class="profile-card scroll-reveal hackerrank" data-tilt data-tilt-max="10">
+                        <div class="profile-glow"></div>
+                        <div class="profile-icon"><i class="fa-solid fa-award"></i></div>
+                        <h3 class="profile-title">HACKERRANK</h3>
+                        <p class="profile-username">> @sohamneswankar</p>
+                        <div class="profile-stats">
+                            <div class="p-stat"><span>PROBLEM_SOLVING:</span> <span>5-Star</span></div>
+                            <div class="p-stat"><span>JAVA:</span> <span>5-Star</span></div>
+                            <div class="p-stat"><span>CPP:</span> <span>5-Star</span></div>
+                        </div>
+                    </a>
+
+                    <!-- LinkedIn Card -->
+                    <a href="https://linkedin.com" target="_blank" class="profile-card scroll-reveal linkedin" data-tilt data-tilt-max="10">
+                        <div class="profile-glow"></div>
+                        <div class="profile-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                        <h3 class="profile-title">LINKEDIN</h3>
+                        <p class="profile-username">> @soham-neswankar</p>
+                        <div class="profile-stats">
+                            <div class="p-stat"><span>CONNECTIONS:</span> <span>500+</span></div>
+                            <div class="p-stat"><span>UPLINK:</span> <span>ESTABLISHED</span></div>
+                            <div class="p-stat"><span>NETWORK:</span> <span>ONLINE</span></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Contact Section -->
+        <section id="contact" class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-text="06. OPEN_UPLINK">06. OPEN_UPLINK</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Form Column -->
+                    <div class="contact-form-wrapper scroll-reveal">
+                        <div class="cyber-form-container">
+                            <div class="form-hud-header">
+                                <span class="form-title">SECURE_COMMUNICATION_LINK</span>
+                                <span class="form-status">PORT: 8080 // OPEN</span>
+                            </div>
+                            
+                            <form id="contactForm" class="cyber-form">
+                                <div class="form-group">
+                                    <input type="text" id="formName" required placeholder=" " class="cyber-input">
+                                    <label for="formName" class="cyber-label"><span class="label-decor">></span> USERNAME</label>
+                                    <div class="input-line"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" id="formEmail" required placeholder=" " class="cyber-input">
+                                    <label for="formEmail" class="cyber-label"><span class="label-decor">></span> EMAIL_UPLINK</label>
+                                    <div class="input-line"></div>
+                                </div>
+                                <div class="form-group">
+                                    <textarea id="formMessage" required rows="5" placeholder=" " class="cyber-input"></textarea>
+                                    <label for="formMessage" class="cyber-label"><span class="label-decor">></span> PAYLOAD_DATA_MESSAGE</label>
+                                    <div class="input-line"></div>
+                                </div>
+                                
+                                <button type="submit" class="truck-button submit-btn">
+                                    <span class="default">TRANSMIT PACKET</span>
+                                    <span class="success">
+                                        PACKET SENT
+                                        <svg viewBox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </svg>
+                                    </span>
+                                    <div class="truck">
+                                        <div class="wheel"></div>
+                                        <div class="back"></div>
+                                        <div class="front"></div>
+                                        <div class="box"></div>
+                                    </div>
+                                </button>
+                            </form>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Direct Connect Column -->
+                    <div class="contact-info scroll-reveal">
+                        <h3 class="cyber-heading">DIRECT COMMUNICATION CHANNELS</h3>
+                        <p class="contact-desc">
+                            Seeking software development internship opportunities. Open a direct communication bridge below.
+                        </p>
+                        
+                        <div class="contact-methods">
+                            <a href="mailto:sohamneswankar@gmail.com" class="info-link">
+                                <div class="link-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                                <div class="link-text">
+                                    <span class="link-lbl">EMAIL</span>
+                                    <span class="link-val">sohamneswankar@gmail.com</span>
+                                </div>
+                            </a>
+                            <div class="info-link">
+                                <div class="link-icon"><i class="fa-solid fa-compass"></i></div>
+                                <div class="link-text">
+                                    <span class="link-lbl">LOCATION</span>
+                                    <span class="link-val">Kalyan, Maharashtra</span>
+                                </div>
+                            </div>
+                            <div class="info-link">
+                                <div class="link-icon"><i class="fa-solid fa-phone"></i></div>
+                                <div class="link-text">
+                                    <span class="link-lbl">CONTACT PHONE</span>
+                                    <span class="link-val">+91 9137603372</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-networks">
+                            <h4 class="social-title">CONNECT CHANNELS</h4>
+                            <div class="social-links">
+                                <a href="https://github.com/SOHAM5128" target="_blank" class="social-btn" aria-label="GitHub Portal"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://linkedin.com" target="_blank" class="social-btn" aria-label="LinkedIn Portal"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://leetcode.com/u/SOHAM_3116" target="_blank" class="social-btn" aria-label="LeetCode Portal"><i class="fa-solid fa-code"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 8. Footer -->
+    <footer class="hud-footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <span class="footer-sys-info">SYSTEM_STATUS: <span class="active-pulse">ONLINE</span> // FPS: <span id="footerFps">60.00</span></span>
+            </div>
+            <div class="footer-center">
+                <span>DESIGNED BY SOHAM NESWANKAR &copy; 2026 // ALL RIGHTS SECURED</span>
+            </div>
+            <div class="footer-right">
+                <a href="#hero" class="scroll-top-btn" aria-label="Return to Top"><i class="fa-solid fa-caret-up"></i> TOP</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CDN Libraries -->
+    <!-- Three.js for 3D Graphics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- GLTF Loader for 3D models -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" crossorigin="anonymous"></script>
+    <!-- MeshLine for ribbon-like lanyard -->
+    <script src="https://unpkg.com/three.meshline@1.4.0/src/THREE.MeshLine.js" crossorigin="anonymous"></script>
+
+    <!-- GSAP for Smooth Micro-Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Vanilla Tilt for Card Mechanics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    
+    <!-- Interactive 3D Card Engine -->
+    <script src="avatar-3d.js"></script>
+    
+    <!-- Core JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
