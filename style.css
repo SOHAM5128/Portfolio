@@ -8,16 +8,16 @@
     --bg-alt: #111827;          /* Dark Surface Card Background */
     --bg-deep: #0B1120;         /* Deep Navy Background */
     
-    /* Premium Professional Accent Colors (Futuristic Gold Accent) */
-    --neon-cyan: #E5A93B;       /* Warm Gold */
-    --neon-blue: #C5A028;       /* Darker Gold */
-    --neon-purple: #E5A93B;     /* Consistent Gold */
-    --neon-pink: #FFD700;       /* Bright Gold */
+    /* Premium Professional Accent Colors (Modern Blue Accent) */
+    --neon-cyan: #3B82F6;       /* Modern Blue Accent */
+    --neon-blue: #2563EB;       /* Blue Accent Hover */
+    --neon-purple: #3B82F6;     /* Consistent Blue Accent */
+    --neon-pink: #3B82F6;       
     
     /* Dimmed Accent Transparencies */
-    --neon-cyan-dim: rgba(229, 169, 59, 0.08);
-    --neon-purple-dim: rgba(229, 169, 59, 0.08);
-    --neon-blue-dim: rgba(197, 160, 40, 0.08);
+    --neon-cyan-dim: rgba(59, 130, 246, 0.08);
+    --neon-purple-dim: rgba(59, 130, 246, 0.08);
+    --neon-blue-dim: rgba(37, 99, 235, 0.08);
     
     /* Typography Colors */
     --text-main: #F9FAFB;       /* White Primary Text */
@@ -25,18 +25,18 @@
     --text-bright: #FFFFFF;     /* Pure High-contrast White */
     
     /* Dedicated Button Variable Mappings (Dark Theme) */
-    --btn-primary-bg: #E5A93B;
-    --btn-primary-hover-bg: #C5A028;
-    --btn-primary-text: #0B1120; /* High contrast dark text on gold button */
-    --btn-primary-shadow: rgba(229, 169, 59, 0.2);
-    --btn-primary-hover-shadow: rgba(197, 160, 40, 0.35);
+    --btn-primary-bg: #3B82F6;
+    --btn-primary-hover-bg: #2563EB;
+    --btn-primary-text: #F9FAFB;
+    --btn-primary-shadow: rgba(59, 130, 246, 0.2);
+    --btn-primary-hover-shadow: rgba(37, 99, 235, 0.35);
     
-    --btn-secondary-border: #E5A93B;
-    --btn-secondary-text: #E5A93B;
-    --btn-secondary-hover-bg: rgba(229, 169, 59, 0.08);
-    --btn-secondary-hover-border: #C5A028;
-    --btn-secondary-hover-text: #C5A028;
-    --btn-secondary-hover-shadow: rgba(229, 169, 59, 0.15);
+    --btn-secondary-border: #3B82F6;
+    --btn-secondary-text: #3B82F6;
+    --btn-secondary-hover-bg: rgba(59, 130, 246, 0.08);
+    --btn-secondary-hover-border: #2563EB;
+    --btn-secondary-hover-text: #2563EB;
+    --btn-secondary-hover-shadow: rgba(59, 130, 246, 0.15);
 
     /* Font Families - Professional Tech style */
     --font-cyber: 'Outfit', sans-serif;
@@ -45,8 +45,8 @@
     
     /* Glassmorphism Presets - Frosted glass on professional slate layout */
     --glass-bg: rgba(17, 24, 39, 0.75); /* Frosted surface cards background */
-    --glass-border: rgba(229, 169, 59, 0.12);
-    --glass-border-cyan: rgba(229, 169, 59, 0.2);
+    --glass-border: rgba(59, 130, 246, 0.12);
+    --glass-border-cyan: rgba(59, 130, 246, 0.2);
     --glass-shadow: rgba(0, 0, 0, 0.5);
     --blur-val: 20px;
 }
@@ -229,8 +229,8 @@ body {
     background-color: var(--bg-dark);
     /* Futuristic grid and soft professional blue ambient glow blobs */
     background-image: 
-        radial-gradient(circle at 15% 20%, rgba(229, 169, 59, 0.04) 0%, transparent 40%),
-        radial-gradient(circle at 85% 75%, rgba(197, 160, 40, 0.04) 0%, transparent 45%),
+        radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(37, 99, 235, 0.04) 0%, transparent 45%),
         linear-gradient(rgba(255, 255, 255, 0.002) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.002) 1px, transparent 1px);
     background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
@@ -258,18 +258,6 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-cyber);
     color: var(--text-bright);
     letter-spacing: 1px;
-}
-
-/* Golden headings in Dark Mode */
-body:not(.light-theme) h1,
-body:not(.light-theme) h2,
-body:not(.light-theme) h3,
-body:not(.light-theme) h4,
-body:not(.light-theme) h5,
-body:not(.light-theme) h6,
-body:not(.light-theme) .section-title,
-body:not(.light-theme) .cyber-heading {
-    color: #FFD700 !important;
 }
 
 a {
@@ -1546,7 +1534,7 @@ input, textarea {
     left: 50%;
     transform: translateX(-50%);
     width: 2px;
-    background: rgba(229, 169, 59, 0.15); /* Sleek Gold trace track */
+    background: rgba(59, 130, 246, 0.15); /* Sleek Blue trace track */
 }
 
 .timeline-line-glow {
@@ -2905,4 +2893,157 @@ body.light-theme .truck-button {
 body.light-theme .truck-button:hover {
   background: #f1f5f9;
   border-color: var(--neon-cyan);
+}
+
+/* ==========================================================================
+   NEW CUSTOM ADDITIONS: BRAND LOGO, HIRE ME, GRADIENTS, STATS
+   ========================================================================== */
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-logo a {
+    font-family: var(--font-cyber);
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--neon-cyan);
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.header-logo a:hover {
+    color: var(--text-bright);
+    text-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.hire-me-btn {
+    padding: 10px 22px !important;
+    font-size: 0.8rem !important;
+    border-radius: 50px !important;
+    text-transform: none !important;
+    letter-spacing: 1px !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #00d2ff 0%, #0066ff 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(0, 102, 255, 0.35) !important;
+    border: none !important;
+    font-family: var(--font-cyber);
+    font-weight: 700;
+    margin-left: 10px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.hire-me-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0, 102, 255, 0.5) !important;
+}
+
+.hero-title span {
+    color: var(--neon-cyan);
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.highlight-text {
+    color: var(--neon-cyan);
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* About Section Statistics Grid */
+.about-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.stat-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-style: preserve-3d;
+}
+
+.stat-card:hover {
+    border-color: var(--neon-cyan);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.stat-icon-wrapper {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.stat-icon-wrapper.cyan-glow {
+    background: rgba(0, 242, 254, 0.1);
+    color: #00f2fe;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+}
+
+.stat-icon-wrapper.purple-glow {
+    background: rgba(168, 85, 247, 0.1);
+    color: #a855f7;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+}
+
+.stat-icon-wrapper.blue-glow {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+.stat-icon-wrapper.teal-glow {
+    background: rgba(20, 184, 166, 0.1);
+    color: #14b8a6;
+    box-shadow: 0 0 15px rgba(20, 184, 166, 0.2);
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-number {
+    font-family: var(--font-cyber);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-bright);
+    margin: 0;
+}
+
+.stat-label {
+    font-family: var(--font-tech);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.4;
+    font-weight: 500;
 }

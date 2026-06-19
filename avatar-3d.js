@@ -82,12 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Colors
         const bg = isLight ? '#F8FAFC' : '#111827';
-        const borderGlow = isLight ? '#2563EB' : '#E5A93B';
+        const borderGlow = isLight ? '#2563EB' : '#3B82F6';
         const textMain = isLight ? '#0F172A' : '#F9FAFB';
         const textMuted = isLight ? '#475569' : '#94A3B8';
-        const gridColor = isLight ? 'rgba(37, 99, 235, 0.08)' : 'rgba(229, 169, 59, 0.08)';
-        const accentNeon = isLight ? '#2563EB' : '#E5A93B';
-        const accentPurple = isLight ? '#1D4ED8' : '#C5A028';
+        const gridColor = isLight ? 'rgba(37, 99, 235, 0.08)' : 'rgba(59, 130, 246, 0.08)';
+        const accentNeon = isLight ? '#2563EB' : '#3B82F6';
+        const accentPurple = isLight ? '#1D4ED8' : '#2563EB';
         
         // --- DRAW FRONT ---
         // Background
@@ -521,7 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add glowing blue border outline to fallback card
         const fallbackEdges = new THREE.EdgesGeometry(cardGeo);
         const fallbackLine = new THREE.LineSegments(fallbackEdges, new THREE.LineBasicMaterial({
-            color: isLight ? 0x2563eb : 0xe5a93b
+            color: isLight ? 0x2563eb : 0x3b82f6
         }));
         cardMesh.add(fallbackLine);
         
@@ -559,7 +559,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Add glowing blue border outline to GLTF card mesh
                         const gltfEdges = new THREE.EdgesGeometry(child.geometry);
                         const gltfLine = new THREE.LineSegments(gltfEdges, new THREE.LineBasicMaterial({
-                            color: isLight ? 0x2563eb : 0xe5a93b
+                            color: isLight ? 0x2563eb : 0x3b82f6
                         }));
                         child.add(gltfLine);
                     } else if (child.name === 'clip' || child.name === 'clamp') {
@@ -654,12 +654,12 @@ document.addEventListener('DOMContentLoaded', () => {
         dirLight1.position.set(5, 5, 4);
         scene.add(dirLight1);
         
-        dirLight2 = new THREE.DirectionalLight(isLight ? 0x1d4ed8 : 0xc5a028, 1.5);
+        dirLight2 = new THREE.DirectionalLight(isLight ? 0x1d4ed8 : 0x2563eb, 1.5);
         dirLight2.position.set(-5, -3, 2);
         scene.add(dirLight2);
  
         // Point light following cursor for specular sheen reflection
-        activePointLight = new THREE.PointLight(isLight ? 0x2563eb : 0xe5a93b, 4.0, 12);
+        activePointLight = new THREE.PointLight(isLight ? 0x2563eb : 0x3b82f6, 4.0, 12);
         activePointLight.position.set(0, 0, 3);
         scene.add(activePointLight);
         
@@ -712,17 +712,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cardGroup) {
             cardGroup.traverse((child) => {
                 if (child.isLineSegments && child.material) {
-                    child.material.color.setHex(isLight ? 0x2563eb : 0xe5a93b);
+                    child.material.color.setHex(isLight ? 0x2563eb : 0x3b82f6);
                 }
             });
         }
  
         // Update light colors to match the theme accent
         if (activePointLight) {
-            activePointLight.color.setHex(isLight ? 0x2563eb : 0xe5a93b);
+            activePointLight.color.setHex(isLight ? 0x2563eb : 0x3b82f6);
         }
         if (dirLight2) {
-            dirLight2.color.setHex(isLight ? 0x1d4ed8 : 0xc5a028);
+            dirLight2.color.setHex(isLight ? 0x1d4ed8 : 0x2563eb);
         }
         
         // Force a brief physics wakeup to settle visual state

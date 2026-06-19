@@ -73,6 +73,9 @@
 
     <!-- Header Navigation -->
     <header class="hud-header">
+        <div class="header-logo">
+            <a href="#hero">SN</a>
+        </div>
         <nav class="header-nav">
             <ul>
                 <li><a href="#about" class="nav-link"><span class="nav-num">01.</span> ABOUT</a></li>
@@ -90,11 +93,20 @@
                 <i class="fa-solid fa-moon"></i>
                 <span class="toggle-glow"></span>
             </button>
+            <!-- Settings Toggle Button -->
+            <button id="settings-toggle" class="theme-toggle-btn" aria-label="Toggle Settings" title="Toggle Settings">
+                <i class="fa-solid fa-gear"></i>
+                <span class="toggle-glow"></span>
+            </button>
             <!-- CodePen Deploy Button -->
             <button id="codepen-deploy" class="theme-toggle-btn" aria-label="Deploy to CodePen" title="Deploy to CodePen">
                 <i class="fa-brands fa-codepen"></i>
                 <span class="toggle-glow"></span>
             </button>
+            <!-- Hire Me Button -->
+            <a href="#contact" class="hire-me-btn">
+                <i class="fa-solid fa-paper-plane"></i> Hire Me
+            </a>
             <!-- Mobile Menu Toggle -->
             <button class="mobile-menu-toggle" aria-label="Toggle Menu">
                 <span class="hamburger-bar"></span>
@@ -128,25 +140,31 @@
                 <div class="hero-grid">
                     <!-- Left Side: Info -->
                     <div class="hero-info-side">
-                        <h1 class="hero-title scroll-reveal">SOHAM NESWANKAR</h1>
-                        <h2 class="hero-subtitle-static scroll-reveal">FULL STACK DEVELOPER</h2>
+                        <div class="cyber-badge-wrapper scroll-reveal">
+                            <span class="cyber-badge"><i class="fa-solid fa-code"></i> FULL STACK DEVELOPER</span>
+                        </div>
+                        <h1 class="hero-title scroll-reveal">SOHAM<br><span class="highlight-text">NESWANKAR</span></h1>
                         <p class="hero-desc scroll-reveal">
                             Computer Science Engineering student at Parul University. Skilled in MERN stack development, REST API integration, and responsive 3D web experiences. Seeking software development internship opportunities.
                         </p>
-                        <div class="hero-ctas scroll-reveal" style="display: flex; flex-wrap: wrap; gap: 15px;">
-                            <!-- Dynamic Resume Download -->
-                            <a href="/api/resume/download" class="cyber-btn primary" download="Soham_Neswankar_Resume.pdf">
-                                <span class="btn-glow"></span>
-                                <span class="btn-text"><i class="fa-solid fa-file-arrow-down"></i> DOWNLOAD RESUME</span>
-                            </a>
-                            <!-- Contact Link -->
-                            <a href="#contact" class="cyber-btn secondary">
-                                <span class="btn-text"><i class="fa-solid fa-satellite-dish"></i> CONNECT PROTOCOL</span>
-                            </a>
-                            <!-- View Projects -->
-                            <a href="#projects" class="cyber-btn secondary">
-                                <span class="btn-text">VIEW PROJECTS <i class="fa-solid fa-caret-down"></i></span>
-                            </a>
+                        <div class="hero-ctas scroll-reveal" style="display: flex; flex-direction: column; gap: 15px;">
+                            <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+                                <!-- Dynamic Resume Download -->
+                                <a href="/api/resume/download" class="cyber-btn primary" download="Soham_Neswankar_Resume.pdf">
+                                    <span class="btn-glow"></span>
+                                    <span class="btn-text"><i class="fa-solid fa-file-arrow-down"></i> Download Resume</span>
+                                </a>
+                                <!-- Contact Link -->
+                                <a href="#contact" class="cyber-btn secondary">
+                                    <span class="btn-text"><i class="fa-solid fa-link"></i> Connect Protocol</span>
+                                </a>
+                            </div>
+                            <div>
+                                <!-- View Projects -->
+                                <a href="#projects" class="cyber-btn secondary" style="width: fit-content;">
+                                    <span class="btn-text">View Projects <i class="fa-solid fa-chevron-right"></i></span>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -172,30 +190,58 @@
         <section id="about" class="section-padding">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title" data-text="01. ABOUT_ME">01. ABOUT_ME</h2>
+                    <h2 class="section-title" data-text="01. ABOUT ME">01. ABOUT ME</h2>
                     <div class="section-line"></div>
                 </div>
-
+ 
                 <div class="about-grid">
                     <!-- Bio Column -->
                     <div class="about-text scroll-reveal">
-                        <h3 class="cyber-heading">CORE PROFILE // SOHAM NESWANKAR</h3>
+                        <h3 class="cyber-heading">Passionate about<br>building <span class="highlight-text">solutions</span></h3>
                         <p class="about-paragraph" style="margin-bottom: 25px;">
-                            I am a Computer Science Engineering student at <span class="highlight">Parul University</span> (Expected Graduation: 2027). As an aspiring software engineer, I focus on constructing high-performance digital ecosystems and bridging core computing architecture with immersive frontend interactions.
+                            I'm a Computer Science Engineering student who loves turning ideas into real-world applications. I enjoy working with modern web technologies and building creative, user-friendly experiences.
                         </p>
-
-                        <div class="about-details-list" style="display: flex; flex-direction: column; gap: 15px; border-top: 1px solid var(--glass-border); padding-top: 20px; margin-bottom: 30px;">
-                            <div class="detail-item" style="line-height: 1.6; font-size: 0.95rem;">
-                                <span style="color: var(--neon-cyan); font-family: var(--font-cyber); font-weight: 800; margin-right: 8px; letter-spacing: 0.5px;">[TECHNOLOGIES]</span>
-                                <span style="color: var(--text-muted);">MERN Stack (React.js, Node.js, Express.js, MongoDB), Java, JavaScript, Python, C, C++, Git, GitHub, REST APIs, Three.js, and AR.js.</span>
+ 
+                        <div class="about-stats-grid">
+                            <!-- Card 1 -->
+                            <div class="stat-card">
+                                <div class="stat-icon-wrapper cyan-glow">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4 class="stat-number">5+</h4>
+                                    <p class="stat-label">Projects Completed</p>
+                                </div>
                             </div>
-                            <div class="detail-item" style="line-height: 1.6; font-size: 0.95rem;">
-                                <span style="color: var(--neon-cyan); font-family: var(--font-cyber); font-weight: 800; margin-right: 8px; letter-spacing: 0.5px;">[INTERESTS]</span>
-                                <span style="color: var(--text-muted);">Full-stack development, Augmented Reality (AR) systems, 3D graphics on the web, and responsive human-centric user experience design.</span>
+                            <!-- Card 2 -->
+                            <div class="stat-card">
+                                <div class="stat-icon-wrapper purple-glow">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4 class="stat-number">2+</h4>
+                                    <p class="stat-label">Technologies Mastered</p>
+                                </div>
                             </div>
-                            <div class="detail-item" style="line-height: 1.6; font-size: 0.95rem;">
-                                <span style="color: var(--neon-cyan); font-family: var(--font-cyber); font-weight: 800; margin-right: 8px; letter-spacing: 0.5px;">[CAREER_GOALS]</span>
-                                <span style="color: var(--text-muted);">Securing a software development internship to solve real-world architectural complexities, engineer scalable client-server pipelines, and contribute to progressive dev teams.</span>
+                            <!-- Card 3 -->
+                            <div class="stat-card">
+                                <div class="stat-icon-wrapper blue-glow">
+                                    <i class="fa-solid fa-award"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4 class="stat-number">3+</h4>
+                                    <p class="stat-label">Certifications</p>
+                                </div>
+                            </div>
+                            <!-- Card 4 -->
+                            <div class="stat-card">
+                                <div class="stat-icon-wrapper teal-glow">
+                                    <i class="fa-solid fa-mug-hot"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4 class="stat-number">100+</h4>
+                                    <p class="stat-label">Cups of Code</p>
+                                </div>
                             </div>
                         </div>
                     </div>
