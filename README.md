@@ -1,4 +1,4 @@
-# 🚀 Soham Neswankar Portfolio
+d# 🚀 Soham Neswankar Portfolio
 
 A modern and interactive developer portfolio showcasing my skills, projects, and experience as a Computer Science Engineering student. The portfolio features a responsive design, smooth animations, and interactive 3D elements built using modern web technologies.
 
@@ -114,7 +114,7 @@ I am a B.Tech Computer Science Engineering student at Parul University with inte
 
 * Email: [sohamneswankar@gmail.com](mailto:sohamneswankar@gmail.com)
 * GitHub: https://github.com/SOHAM5128
-* LinkedIn: https://www.linkedin.com/in/soham-neswankar-16268a40a
+* LinkedIn: https://www.linkedin.com/in/soham-neswankar
 
 ## ⭐ Support
 
