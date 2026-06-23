@@ -1,6 +1,6 @@
 # 🚀 Soham Neswankar Portfolio
 
-A modern and interactive developer portfolio showcasing my skills, projects, and experience as a Computer Science Engineering student. The portfolio features a responsive design, smooth animations, interactive 3D elements, and a Java-based backend server.
+A modern and interactive developer portfolio showcasing my skills, projects, and experience as a Computer Science Engineering student. The portfolio features a responsive design, smooth animations, and interactive 3D elements built using modern web technologies.
 
 ## 🌟 Features
 
@@ -19,13 +19,13 @@ A modern and interactive developer portfolio showcasing my skills, projects, and
 * Mobile-friendly layout
 * Futuristic developer dashboard style
 
-### Backend Functionality
+### Portfolio Highlights
 
-* Multithreaded Java HTTP server
-* Static file serving
-* GitHub profile statistics integration
-* Contact form data handling
-* Secure file routing and request processing
+* Professional introduction and profile section
+* Skills and technology showcase
+* Project portfolio display
+* GitHub profile integration
+* Contact information and social links
 
 ## 🛠️ Tech Stack
 
@@ -37,16 +37,11 @@ A modern and interactive developer portfolio showcasing my skills, projects, and
 * Three.js
 * GSAP
 
-### Backend
-
-* Java
-* Java HttpServer
-
 ### Tools & Platforms
 
 * Git
 * GitHub
-* Vercel
+* GitHub Pages
 
 ## 📂 Project Structure
 
@@ -57,8 +52,6 @@ A modern and interactive developer portfolio showcasing my skills, projects, and
 ├── style.css
 ├── script.js
 ├── avatar-3d.js
-├── PortfolioServer.java
-├── run-backend.bat
 ├── Soham_Neswankar_Resume.pdf
 └── README.md
 ```
@@ -67,42 +60,33 @@ A modern and interactive developer portfolio showcasing my skills, projects, and
 
 ### Prerequisites
 
-* Java JDK 11 or above
 * Modern web browser (Chrome, Edge, Firefox, Safari)
 
 ### Run Locally
 
-#### Option 1: Using Batch File (Windows)
-
-Double-click:
+1. Clone the repository
 
 ```bash
-run-backend.bat
+git clone https://github.com/SOHAM5128/Portfolio.git
 ```
 
-#### Option 2: Using Terminal
+2. Open the project folder
 
 ```bash
-java PortfolioServer.java
+cd Portfolio
 ```
 
-Open your browser and visit:
-
-```text
-http://localhost:8080
-```
+3. Open `index.html` in your browser
 
 ## 🌐 Live Demo
 
 Portfolio Website:
 
-https://portfolio-fq4kh4dgv-soham5128.vercel.app/
+https://soham5128.github.io/Portfolio/
 
 ## 📸 Screenshots
 
 Add screenshots of your portfolio here.
-
-Example:
 
 ```markdown
 ![Home Page](assets/screenshots/home.png)
@@ -121,7 +105,8 @@ I am a B.Tech Computer Science Engineering student at Parul University with inte
 * Node.js
 * Express.js
 * MongoDB
-* HTML & CSS
+* HTML5
+* CSS3
 * Three.js
 * Git & GitHub
 
@@ -131,8 +116,12 @@ I am a B.Tech Computer Science Engineering student at Parul University with inte
 * GitHub: https://github.com/SOHAM5128
 * LinkedIn: https://www.linkedin.com/in/soham-neswankar-16268a40a
 
+## ⭐ Support
+
+If you like this project, consider giving it a star on GitHub.
+
 ## 📄 License
 
 This project is created for educational and portfolio purposes.
 
-© Soham Neswankar
+© 2026 Soham Neswankar. All Rights Reserved.
